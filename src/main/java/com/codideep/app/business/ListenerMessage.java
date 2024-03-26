@@ -46,23 +46,25 @@ public class ListenerMessage extends Thread {
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
                 writer.println("listenerMessageXyz_");
-                
+
                 message = new BufferedReader(new InputStreamReader(socket.getInputStream())).readLine().split("_MessageXYZMessage_");
 
-                for (String element : message) {
-                    existsMessage = false;
-                    
-                    for (String item : listMessage) {
-                        if (element.split("__SEPID__")[0].equals(item.split("__SEPID__")[0])) {
-                            existsMessage = true;
-                        }
-                    }
+                if (!message[0].isEmpty()) {
+                    for (String element : message) {
+                        existsMessage = false;
 
-                    if(!existsMessage) {
-                        listMessage.add(element);
-                        modelListContentMessage.addElement(element.split("__SEPID__")[1]);
-                        
-                        listContentMessage.ensureIndexIsVisible((listMessage.isEmpty() ? 1 : listMessage.size()) - 1);
+                        for (String item : listMessage) {
+                            if (element.split("__SEPID__")[0].equals(item.split("__SEPID__")[0])) {
+                                existsMessage = true;
+                            }
+                        }
+
+                        if (!existsMessage) {
+                            listMessage.add(element);
+                            modelListContentMessage.addElement(element.split("__SEPID__")[1]);
+
+                            listContentMessage.ensureIndexIsVisible((listMessage.isEmpty() ? 1 : listMessage.size()) - 1);
+                        }
                     }
                 }
 
