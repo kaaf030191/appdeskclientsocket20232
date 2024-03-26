@@ -24,7 +24,7 @@ public class SendMessage {
 
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
-            writer.println("sendMessageXyz_:" + message);
+            writer.println("sendMessageXyz_" + message);
 
             socket.close();
         } catch (IOException e) {

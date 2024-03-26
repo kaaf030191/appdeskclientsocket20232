@@ -23,7 +23,7 @@ public class FrmChat extends javax.swing.JFrame {
         
         listContentMessage.setModel(modelListContentMessage);
         
-        new ListenerMessage(modelListContentMessage).start();
+        new ListenerMessage(modelListContentMessage, listContentMessage).start();
     }
 
     /**
