@@ -62,7 +62,7 @@ public class ListenerMessage extends Thread {
                         listMessage.add(element);
                         modelListContentMessage.addElement(element.split("__SEPID__")[1]);
                         
-                        listContentMessage.ensureIndexIsVisible(listMessage.size() - 1);
+                        listContentMessage.ensureIndexIsVisible((listMessage.isEmpty() ? 1 : listMessage.size()) - 1);
                     }
                 }
 
